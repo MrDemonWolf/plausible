@@ -28,13 +28,11 @@ jobs:
                   npm run build
 
             - name: Generate plugin zip using 10up action
-              uses: 10up/action-wordpress-plugin-deploy@stable
+              uses: 10up/action-wordpress-plugin-build-zip@stable
               with:
-                  dry-run: true
+                  dry-run:
                   generate-zip: true # This will generate the zip file for the plugin
               env:
-                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
                   SLUG: plausible-analytics
 
             - name: Upload to GitHub Release
