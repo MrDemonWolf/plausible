@@ -30,7 +30,6 @@ jobs:
             - name: Generate plugin zip using 10up action
               uses: 10up/action-wordpress-plugin-build-zip@stable
               with:
-                  dry-run:
                   generate-zip: true # This will generate the zip file for the plugin
               env:
                   SLUG: plausible-analytics
