@@ -15,7 +15,7 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
 
 		$ip  = $this->get_user_ip_address();
 
-        // Add this line if you want to allow self-hosted Plausible to Proxy
+    // Add this line if you want to allow self-hosted Plausible to Proxy
 		$url = 'https://plausible.io/api/event';
 		if ( defined( 'PLAUSIBLE_SELF_HOSTED_DOMAIN' ) ) {
 			$url = "https://" . PLAUSIBLE_SELF_HOSTED_DOMAIN . "/api/event/";
@@ -77,24 +77,26 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
     				],
     			],
 
-```
+````
 
-src/admin/settings/Hooks.php
+## src/admin/settings/Hooks.php
 ```php
+
 	public function proxy_warning() {
-        // Remove this line if you want to allow self-hosted Plausible to Proxy
 		if ( ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ) ) {
+      // Remove this line if you want to allow self-hosted Plausible to Proxy
 			$this->option_na_in_ce();
-            // Add this line if you want to allow self-hosted Plausible to Proxy
-            echo sprintf(
+      // Add this line if you want to allow self-hosted Plausible to Proxy
+			echo sprintf(
 				wp_kses(
 					__(
-						'After enabling this option, please check your Plausible dashboard to make sure stats are being recorded. Are stats not being recorded? Check github issues for <a href="%s" target="_blank">known issues</a>. We\'re here to help!',
+			'After enabling this option, please check your Plausible dashboard to make sure stats are being recorded. Are stats not being recorded? Check github issues for <a href="%s" target="_blank">known issues</a>. We\'re here to help!',
 						'plausible-analytics'
 					),
 					'post'
 				),
 				'https://github.com/plausible/analytics/issues'
+
 			);
 		} else {
 			echo sprintf(
@@ -109,5 +111,5 @@ src/admin/settings/Hooks.php
 			);
 		}
 	}
-```
 
+````

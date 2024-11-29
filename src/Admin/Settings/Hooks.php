@@ -68,17 +68,18 @@ class Hooks extends API {
 	 * @since  1.3.0
 	 * @output HTML
 	 */
-	public function proxy_warning() {
+	 public function proxy_warning() {
 		if ( ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ) ) {
 			echo sprintf(
 				wp_kses(
 					__(
-						'After enabling this option, please check your Plausible dashboard to make sure stats are being recorded. Are stats not being recorded? Check github issues for <a href="%s" target="_blank">known issues</a>. We\'re here to help!',
+			'After enabling this option, please check your Plausible dashboard to make sure stats are being recorded. Are stats not being recorded? Check github issues for <a href="%s" target="_blank">known issues</a>. We\'re here to help!',
 						'plausible-analytics'
 					),
 					'post'
 				),
 				'https://github.com/plausible/analytics/issues'
+
 			);
 		} else {
 			echo sprintf(
