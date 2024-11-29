@@ -27,10 +27,14 @@ jobs:
                   npm ci
                   npm run build
 
-            - name: Generate plugin zip
-              run: |
-                  mkdir -p release
-                  zip -r release/plausible-analytics.zip . -x "*.git*" "node_modules/*" "tests/*"
+            - name: Generate plugin zip using 10up action
+              uses: 10up/action-wordpress-plugin-deploy@stable
+              with:
+                  generate-zip: true # This will generate the zip file for the plugin
+              env:
+                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+                  SLUG: plausible-analytics
 
             - name: Upload to GitHub Release
               uses: actions/upload-release-asset@v1
@@ -38,6 +42,6 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   upload_url: ${{ github.event.release.upload_url }}
-                  asset_path: release/plausible-analytics.zip
+                  asset_path: plausible-analytics.zip
                   asset_name: plausible-analytics.zip
                   asset_content_type: application/zip
