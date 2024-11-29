@@ -30,6 +30,7 @@ jobs:
             - name: Generate plugin zip using 10up action
               uses: 10up/action-wordpress-plugin-deploy@stable
               with:
+                  dry-run: true
                   generate-zip: true # This will generate the zip file for the plugin
               env:
                   SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
