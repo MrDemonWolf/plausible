@@ -94,7 +94,7 @@ class Page extends API {
 					'desc'   => sprintf(
 						wp_kses(
 							__(
-								'Ensure your domain name matches the one in <a href="%s" target="_blank">your Plausible account</a>, then <a class="hover:cursor-pointer underline plausible-create-api-token">create a Plugin Token</a> (link opens in a new window) and paste it into the \'Plugin Token\' field.',
+								'Ensure your domain name matches the one in <a href="%s" target="_blank">your Plausible account</a>, then <a class="underline hover:cursor-pointer plausible-create-api-token">create a Plugin Token</a> (link opens in a new window) and paste it into the \'Plugin Token\' field.',
 								'plausible-analytics'
 							),
 							'post'
@@ -111,7 +111,7 @@ class Page extends API {
 						[
 							'label' => esc_html__( 'Plugin Token', 'plausible-analytics' ) .
 								' - ' .
-								'<a class="hover:cursor-pointer underline plausible-create-api-token">' .
+								'<a class="underline hover:cursor-pointer plausible-create-api-token">' .
 								__( 'Create Token', 'plausible-analytics' ) .
 								'</a>',
 							'slug'  => 'api_token',
@@ -237,7 +237,6 @@ class Page extends API {
 							'slug'     => 'proxy_enabled',
 							'type'     => 'checkbox',
 							'value'    => 'on',
-							'disabled' => ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ),
 						],
 					],
 				],

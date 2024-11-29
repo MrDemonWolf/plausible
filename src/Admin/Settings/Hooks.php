@@ -70,7 +70,16 @@ class Hooks extends API {
 	 */
 	public function proxy_warning() {
 		if ( ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ) ) {
-			$this->option_na_in_ce();
+			echo sprintf(
+				wp_kses(
+					__(
+						'After enabling this option, please check your Plausible dashboard to make sure stats are being recorded. Are stats not being recorded? Check github issues for <a href="%s" target="_blank">known issues</a>. We\'re here to help!',
+						'plausible-analytics'
+					),
+					'post'
+				),
+				'https://github.com/plausible/analytics/issues'
+			);
 		} else {
 			echo sprintf(
 				wp_kses(
@@ -148,7 +157,7 @@ class Hooks extends API {
 		echo sprintf(
 			wp_kses(
 				__(
-					'Please <a class="plausible-create-api-token hover:cursor-pointer underline">create a Plugin Token</a> and insert it into the Plugin Token field above.',
+					'Please <a class="underline plausible-create-api-token hover:cursor-pointer">create a Plugin Token</a> and insert it into the Plugin Token field above.',
 					'plausible-analytics'
 				),
 				'post'
@@ -164,7 +173,7 @@ class Hooks extends API {
 	public function option_disabled_by_missing_api_token() {
 		echo wp_kses(
 			__(
-				'Please <a class="plausible-create-api-token hover:cursor-pointer underline">create a Plugin Token</a> and insert it into the Plugin Token field above to enable this option.',
+				'Please <a class="underline plausible-create-api-token hover:cursor-pointer">create a Plugin Token</a> and insert it into the Plugin Token field above to enable this option.',
 				'plausible-analytics'
 			),
 			'post'
