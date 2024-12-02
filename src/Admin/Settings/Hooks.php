@@ -68,7 +68,7 @@ class Hooks extends API {
 	 * @since  1.3.0
 	 * @output HTML
 	 */
-	 public function proxy_warning() {
+	public function proxy_warning() {
 		if ( ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ) ) {
 			echo sprintf(
 				wp_kses(
