@@ -39,7 +39,7 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
 
 ## src/admin/settings/Page.php
 
-    ```php
+```php
     [
     				'label'  => esc_html__( 'Bypass ad blockers', 'plausible-analytics' ),
     				'slug'   => 'bypass_ad_blockers',
@@ -76,8 +76,7 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
     					],
     				],
     			],
-
-````
+```
 
 ## src/admin/settings/Hooks.php
 
@@ -111,5 +110,12 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
 			);
 		}
 	}
+```
 
-````
+Make sure to setup the folliing in your wp-config.php
+
+```php
+define('PLAUSIBLE_SELF_HOSTED_DOMAIN', 'analytics.example.com');
+```
+
+and also in your Plausible dashboard, under Settings, set the domain name to analytics.example.com and save otherwise Plausible will not be able to track your stats.
