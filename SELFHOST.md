@@ -78,19 +78,6 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
     			],
 
 ````
-## src/admin/settings/Page.php
-```php
-						'revenue'        => [
-							'label'    => esc_html__( 'Ecommerce revenue', 'plausible-analytics' ),
-							'docs'     => 'https://plausible.io/wordpress-analytics-plugin#how-to-track-ecommerce-revenue',
-							'slug'     => 'enhanced_measurements',
-							'type'     => 'checkbox',
-							'value'    => 'revenue',
-              // Switch for this otherwise it will be allowed when the self hosted one can't use this
-							'disabled' => ! empty( $settings[ 'self_hosted_domain' ] ),
-              'disabled' => ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ),
-						],
-````
 
 ## src/admin/settings/Hooks.php
 
@@ -125,4 +112,4 @@ I have made the following changes to the Plausible WordPress plugin to allow sel
 		}
 	}
 
-```
+````
