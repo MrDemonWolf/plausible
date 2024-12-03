@@ -181,7 +181,7 @@ class Page extends API {
 							'slug'     => 'enhanced_measurements',
 							'type'     => 'checkbox',
 							'value'    => 'revenue',
-							'disabled' => ! empty( $settings[ 'self_hosted_domain' ] ),
+							'disabled' => ! empty( Helpers::get_settings()[ 'self_hosted_domain' ] ),
 						],
 						'pageview-props' => [
 							'label' => esc_html__( 'Authors and categories', 'plausible-analytics' ),
