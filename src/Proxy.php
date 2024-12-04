@@ -146,7 +146,7 @@ class Proxy {
 			[
 				'user-agent' => $ua,
 				'headers'    => [
-					'X-Forwarded-For' => $ip,
+					'X-Plausible-IP' => $ip,
 					'Content-Type'    => 'application/json',
 				],
 				'body'       => wp_kses_no_null( $params ),
